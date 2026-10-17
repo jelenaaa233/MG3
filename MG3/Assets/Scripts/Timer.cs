@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     //
     // Make sure to TUNE this value in the INSPECTOR after you create it!
 
-    //private ??? ???;
+    private float timeLeft;
 
     // STEP 1 -----------------------------------------------------------------
 
@@ -31,7 +31,10 @@ public class Timer : MonoBehaviour
     //}
 
     // STEP 2 -----------------------------------------------------------------
-
+    public void BeginTimer(float startTime)
+    {
+        timeLeft = startTime;
+    }
     // STEP 3 -----------------------------------------------------------------
     // Uncomment the line below and fill in the ???s to create this method.
     //
@@ -48,7 +51,10 @@ public class Timer : MonoBehaviour
     //      how much time has passed since the last frame.
     // In this method body, use Time.deltaTime to decrease the the value of 
     //      our timer member variable every frame.
-
+    private void Update()
+    {
+        timeLeft -= Time.deltaTime;
+    }
 
     //}
 
@@ -58,7 +64,7 @@ public class Timer : MonoBehaviour
         // STEP 4 -------------------------------------------------------------
         // REPLACE this line with a new line of code that reutrns the value of
         //      your time member variable.
-        return 0;
+        return timeLeft;
         // STEP 4 -------------------------------------------------------------
     }
 
@@ -67,7 +73,10 @@ public class Timer : MonoBehaviour
     //      variable is out of time.
     // Other classes can CALL this method to check if the timer is up.
     // It should be public, and has no input.
-    
+    public bool IsFinished()
+    {
+        return timeLeft <= 0;
+    }
 
 
     // STEP 5 -----------------------------------------------------------------
