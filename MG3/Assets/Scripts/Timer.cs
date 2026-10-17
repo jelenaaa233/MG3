@@ -53,7 +53,11 @@ public class Timer : MonoBehaviour
     //      our timer member variable every frame.
     private void Update()
     {
-        timeLeft -= Time.deltaTime;
+        if (timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+            timeLeft = Mathf.Max(0f, timeLeft);
+        }
     }
 
     //}
